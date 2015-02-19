@@ -8,7 +8,8 @@ typedef unsigned int * adcWaveform;
 
 struct resultantPeakData
 {
-  Float_t _peakHeight; // in units of bits
+  
+Float_t _peakHeight; // in units of bits
   Float_t _peakTime; // time of peak relative to 140.0 ns interval
 
   // Default constructor - should probably be deleted
