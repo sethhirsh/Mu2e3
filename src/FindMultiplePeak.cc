@@ -1,7 +1,7 @@
 // MAKE SURE THAT initParams is getting passed everywhere correctly 
 
-#include "FindMultiplePeak.hh"
-#include "FitModelRoot.hh"
+#include "Mu2e3/inc/FindMultiplePeak.hh"
+#include "Mu2e3/inc/FitModelRoot.hh"
 
 // TODO : ADD CLASS FindDoublePeakWithConstantPedestal
 
@@ -173,7 +173,8 @@ void FindDoublePeak::fitParams2ResultantData(const Double_t *fitParameters, resu
 	result[1] = secondPeakData;
 }
 
-/**FindDoublePeakWithConstantPedestal::FindDoublePeakWithConstantPedestal(const ConfigStruct &initParams) : FindPeakBaseRoot(initParams)
+/**
+FindDoublePeakWithConstantPedestal::FindDoublePeakWithConstantPedestal(const ConfigStruct &initParams) : FindPeakBaseRoot(initParams)
 {
 	_fitModel = TF1("fitModel",FitModelRoot::doublePeakTrunc,0.0,_initParams._hitPeriod,5);
 }
@@ -211,8 +212,8 @@ void FindDoublePeakWithConstantPedestal::fitParams2ResultantData(const Double_t 
 
 	result[0] = firstPeakData;
 	result[1] = secondPeakData;
-}**/
-
+}
+**/
 
 
 // FindDoublePeakWithDynamicPedestal normal constructor with ConfigStruct initilization parameters
@@ -392,4 +393,3 @@ void FindMultiplePeaks::dynamicPedestalAddPeak(const TGraphErrors &gr, resultant
 	resultantPeakData newPeakData(newTPeak, newAdcPeak);
 	result.push_back(newPeakData);
 }
-

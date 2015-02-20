@@ -1,7 +1,7 @@
 #ifndef FindMultiplePeak_hh
 #define FindMultiplePeak_hh
 
-#include "FindPeakBaseRoot.hh"
+#include "Mu2e3/inc/FindPeakBaseRoot.hh"
 
 class FindSinglePeak : public FindPeakBaseRoot{
 	public:
@@ -81,8 +81,7 @@ class FindMultiplePeaks : public FindPeakBaseRoot{
 		
 		// Fills result using adc waveform data using by fitting with the convolutionSinglePeakWithDynamicPedestal model
 		// NOTE : This function may begin with peak data provided in result which is replaced
-		virtual void process(const adcWaveform adcData, resultantHitData &result);
-
+		virtual void process(const adcWaveform adcData, resultantHitData &result); 
 	private:
 		// Performs explicit peak search on adc waveform data
 		void findPeaks(const TGraphErrors &gr, const ConfigStruct &initParams, resultantHitData &result, const double sigma = 3.0);

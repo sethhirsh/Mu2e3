@@ -1,4 +1,4 @@
-#include "FindPeakBaseRoot.hh"
+#include "Mu2e3/inc/FindPeakBaseRoot.hh"
 
 // Fits a model function to a waveform
 // Note: It is assumed that the waveform being fitted is normalized. 

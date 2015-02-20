@@ -1,16 +1,19 @@
-#include "FitModelRoot.hh"
+#include "Mu2e3/inc/FitModelRoot.hh"
 #include "TMath.h"
-#include "FitModel.hh"
+#include "Mu2e3/inc/FitModel.hh"
 
 namespace FitModelRoot
 {
+	
+	ConfigStruct fitInitParams; // THIS NEEDS TO EVENTUALLY BE DELETED
+
 	// Par0 - Q
 	// The dynamic pedestal is of the form Q e^(-t / tau). 
 	//Note that normalized it is Q / tau rather than Q 
 	Float_t dynamicPedestalTrunc(Double_t *x, Double_t *par)
 	{
 	  DynamicPedestalParamStruct parStruct(par[0]);	
-	  return FitModel::dynamicPedestalTrunc(x[0],parStruct, initParams);
+	  return FitModel::dynamicPedestalTrunc(x[0],parStruct, fitInitParams);
 	}	
 
 	//Fitting function for current Function2
@@ -21,11 +24,11 @@ namespace FitModelRoot
 	{
 	  SinglePeakParamStruct parStruct(par[0],par[1],par[2]);
 
-	  return FitModel::singlePeakTrunc(x[0],parStruct,initParams);
+	  return FitModel::singlePeakTrunc(x[0],parStruct,fitInitParams);
 
 	}
 				
-	//Fitting function for current Function2
+	//Fitting function for current Function
 	//par[0] is shifted time 1st peak
 	//par[1] is scalingfactor 1st peak
 	//par[2] is vertical shift 1st peak
@@ -35,7 +38,7 @@ namespace FitModelRoot
 	{
 	  SinglePeakWithConstantPedestalParamStruct parStruct(par[0],par[1],par[2],par[3]);
 
-	  return FitModel::singlePeakWithConstantPedestalTrunc(x[0],parStruct,initParams);
+	  return FitModel::singlePeakWithConstantPedestalTrunc(x[0],parStruct,fitInitParams);
 	}
 
 	// This is a truncating fitting function with a dynamical pedestal
@@ -50,7 +53,7 @@ namespace FitModelRoot
 
 		SinglePeakWithDynamicPedestalParamStruct parStruct(par[0],par[1],par[2],par[3]);
 
-  		return FitModel::singlePeakWithDynamicPedestalTrunc(x[0],parStruct,initParams);
+  		return FitModel::singlePeakWithDynamicPedestalTrunc(x[0],parStruct,fitInitParams);
   	}
 
 	// Par0 - shift in X 1st peak
@@ -62,7 +65,7 @@ namespace FitModelRoot
 	    
 		DoublePeakParamStruct parStruct(par[0],par[1],par[2],par[3]);
 
-      	return FitModel::doublePeakTrunc(x[0],parStruct,initParams);
+      	return FitModel::doublePeakTrunc(x[0],parStruct,fitInitParams);
 	}
 	 
     // Par0 - shift in X 1st peak
@@ -74,7 +77,7 @@ namespace FitModelRoot
 	{
 		DoublePeakWithConstantPedestalParamStruct parStruct(par[0],par[1],par[2],par[3],par[4]);
 
-      	return FitModel::doublePeakWithConstantPedestalTrunc(x[0],parStruct,initParams);
+      	return FitModel::doublePeakWithConstantPedestalTrunc(x[0],parStruct,fitInitParams);
 	}
 
 	// Par0 - shift in X 1st peak
@@ -87,7 +90,7 @@ namespace FitModelRoot
 
 		DoublePeakWithDynamicPedestalParamStruct parStruct(par[0],par[1],par[2],par[3],par[4]);
 
-  		return FitModel::doublePeakWithDynamicPedestalTrunc(x[0],parStruct,initParams);
+  		return FitModel::doublePeakWithDynamicPedestalTrunc(x[0],parStruct,fitInitParams);
 	}
 
 }

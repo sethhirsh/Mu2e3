@@ -6,7 +6,6 @@
 
 namespace FitModelRoot
 {
-	ConfigStruct initParams; // THIS NEEDS TO EVENTUALLY BE DELETED
 
 	Float_t dynamicPedestalTrunc(Double_t *x, Double_t *par);
 

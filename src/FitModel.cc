@@ -1,6 +1,6 @@
 #include "TMath.h"
-#include "ParamStructs.hh"
-#include "FitModel.hh"
+#include "Mu2e3/inc/ParamStructs.hh"
+#include "Mu2e3/inc/FitModel.hh"
 #include <iostream>
 
 
