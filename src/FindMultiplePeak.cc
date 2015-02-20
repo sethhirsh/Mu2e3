@@ -5,6 +5,26 @@
 
 // TODO : ADD CLASS FindDoublePeakWithConstantPedestal
 
+SumADC::SumADC(const ConfigStruct &initParams) : FindPeakBase(initParams){}
+
+void SumADC::process(const adcWaveform adcData, resultantHitData &result)
+{
+ 	int sum;
+	for (auto i = 0;  i < _initParams._numSamplesPerHit; ++i)
+	{
+		sum += adcData[i];
+	}
+	sum -= 2 * _initParams._defaultPedestal;
+	
+	// Unlike the other Find Peak Methods Sum ADC return the sum in result._peakHeight and does not alter the peak time 	
+	
+	resultantPeakData peakData;
+	peakData._peakHeight = sum; 
+	result.push_back(peakData);
+}
+
+
+
 
 // FindSinglePeak normal constructor with ConfigStruct initilization parameters
 FindSinglePeak::FindSinglePeak(const ConfigStruct &initParams) : FindPeakBaseRoot(initParams)

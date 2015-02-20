@@ -3,6 +3,14 @@
 
 #include "Mu2e3/inc/FindPeakBaseRoot.hh"
 
+class SumADC : public FindPeakBase{
+	public:
+		SumADC(const ConfigStruct &initParams);
+
+		virtual void process(const adcWaveform adcData, resultantHitData &result);
+};
+
+
 class FindSinglePeak : public FindPeakBaseRoot{
 	public:
 		// FindSinglePeak normal constructor with ConfigStruct initilization parameters
