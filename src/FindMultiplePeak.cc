@@ -9,7 +9,7 @@ SumADC::SumADC(const ConfigStruct &initParams) : FindPeakBase(initParams){}
 
 void SumADC::process(const adcWaveform adcData, resultantHitData &result)
 {
- 	int sum;
+ 	int sum = 0;
 	for (auto i = 0;  i < _initParams._numSamplesPerHit; ++i)
 	{
 		sum += adcData[i];

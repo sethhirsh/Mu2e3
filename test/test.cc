@@ -1,6 +1,6 @@
-#include "FindMultiplePeak.hh"
+#include "Mu2e3/inc/FindMultiplePeak.hh"
 #include <iostream>
-#include "FitModelRoot.hh" 
+#include "Mu2e3/inc/FitModelRoot.hh" 
 #include "TF1.h"
  
 
