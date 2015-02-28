@@ -36,13 +36,12 @@ FindSinglePeak::FindSinglePeak(const ConfigStruct &initParams) : FindPeakBaseRoo
 // Fills result using adc waveform data using by fitting with the convolutionSinglePeakWithDynamicPedestal model
 // NOTE : This function may begin with peak data provided in result which is replaced
 void FindSinglePeak::process(const adcWaveform adcData, resultantHitData &result)
-{	
+{
+/**
 	// Set initial fit parameters
 	const double timeshift = 30.0;
 	const double scalingFactor = TMath::Max((result[0]._peakHeight - _initParams._defaultPedestal) * _initParams._bits2scalingFactor, 1000.0);
-	std::cout << "scalingFactor : " << scalingFactor << std::endl; 
-	std::cout << "result[0]._peakHeight : " << result[0]._peakHeight << std::endl;
-
+        std::cout << "this was triggered" << std::endl;
 	const double sigma = 10.0;
 	const Double_t initialParameters[3] = {timeshift, scalingFactor, sigma};
 
@@ -50,10 +49,10 @@ void FindSinglePeak::process(const adcWaveform adcData, resultantHitData &result
 
 	FindPeakBaseRoot::adcWaveform2TGraphErrors(adcData, _fitData);
 	FindPeakBaseRoot::fitModel2NormalizedWaveform(_fitModel, _fitData, initialParameters, finalParameters); 
-	std::cout << "finalParameters[1] : " << finalParameters[1] << std::endl;
-	std::cout << "finalParameters[0] : " << finalParameters[0] << std::endl;
-	std::cout << "finalParameters[2] : " << finalParameters[2] << std::endl;
-	fitParams2ResultantData(finalParameters, result);
+	//std::cout << "finalParameters[1] : " << finalParameters[1] << std::endl;
+	//std::cout << "finalParameters[0] : " << finalParameters[0] << std::endl;
+	//std::cout << "finalParameters[2] : " << finalParameters[2] << std::endl;
+	fitParams2ResultantData(finalParameters, result);**/
 }
 
 
@@ -75,6 +74,7 @@ FindSinglePeakWithConstantPedestal::FindSinglePeakWithConstantPedestal(const Con
   _fitModel = TF1("fitModel",FitModelRoot::convolutionSinglePeakWithConstantPedestalTrunc,0.0,_initParams._hitPeriod,4);
 }
 
+
 // Fills result using adc waveform data using by fitting with the convolutionSinglePeakWithDynamicPedestal model
 // NOTE : This function may begin with peak data provided in result which is replaced
 void FindSinglePeakWithConstantPedestal::process(const adcWaveform adcData, resultantHitData &result)
@@ -82,7 +82,7 @@ void FindSinglePeakWithConstantPedestal::process(const adcWaveform adcData, resu
 	// Set initial fit parameters
 	const double timeshift = 30.0;
 	const double scalingFactor = TMath::Max((result[0]._peakHeight - _initParams._defaultPedestal) * _initParams._bits2scalingFactor, 1000.0);
-	std::cout << "scaling factor : " << scalingFactor << std::endl;
+	//std::cout << "scaling factor : " << scalingFactor << std::endl;
 	const double sigma = 10.0;
 	const double verticalShift = (adcData[0] + adcData[1]) * 0.5;
 	const Double_t initialParameters[4] = {timeshift, scalingFactor , verticalShift, sigma};
@@ -97,13 +97,13 @@ void FindSinglePeakWithConstantPedestal::process(const adcWaveform adcData, resu
 
 void FindSinglePeakWithConstantPedestal::fitParams2ResultantData(const Double_t *fitParameters, resultantHitData &result)
 {
-	resultantPeakData peakData;
+/**	resultantPeakData peakData;
 
 	// If there's time maybe make timeshift,scaling factor enumerated like true anomaly and eccentricity
 	peakData._peakTime = fitParameters[0];
 	peakData._peakHeight = fitParameters[1] * _initParams._scalingFactor2bits;
 
-	result[0] = peakData;
+	result[0] = peakData;**/
 }	
 
 

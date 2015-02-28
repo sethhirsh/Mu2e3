@@ -20,7 +20,7 @@ class FindSinglePeak : public FindPeakBaseRoot{
 		// NOTE : This function may begin with peak data provided in result which is replaced
 		virtual void process(const adcWaveform adcData, resultantHitData &result);
 
-	private:
+//	private:
 		void fitParams2ResultantData(const Double_t *fitParameters, resultantHitData &result);
 };
 

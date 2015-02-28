@@ -15,34 +15,11 @@ Import('mu2e_helper')
 
 helper=mu2e_helper()
 
-rootlibs = env['ROOTLIBS']
-babarlibs = env['BABARLIBS']
-
 mainlib = helper.make_mainlib ( [
-    'art_Framework_Core',
-    'art_Framework_Services_Optional_TFileService_service',
-    babarlibs,
-    'mu2e_GeometryService',
-    'mu2e_ConditionsService',
-    'mu2e_Mu2eUtilities',
-    'mu2e_GeneralUtilities',
-    'mu2e_MCDataProducts',
-    'mu2e_RecoDataProducts',
-    'CLHEP',
-    ] )
+] )
 
 helper.make_plugins( [
     mainlib,
-    'art_Framework_Core',
-    'art_Framework_Services_Optional_TFileService_service',
-    babarlibs,
-    'mu2e_GeometryService',
-    'mu2e_ConditionsService',
-    'mu2e_Mu2eUtilities',
-    'mu2e_GeneralUtilities',
-    'mu2e_MCDataProducts',
-    'mu2e_RecoDataProducts',
-    'CLHEP',
     ] )
 
 
