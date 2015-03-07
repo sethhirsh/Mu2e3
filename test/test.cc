@@ -12,13 +12,13 @@ int testit(const int num)
 
 	resultantHitData result;
 	const ConfigStruct initParams;
-	FindMultiplePeaks peak(initParams);
+	FindSinglePeak peak(initParams);
 	for (int i = 0; i < num; ++i)
 	{peak.process(adcData, result);
 	}
 
-	std::cout << "result[0]._peakTime" << result[0]._peakTime << std::endl;
-	std::cout << "result[0]._peakHeight" << result[0]._peakHeight << std::endl;
+	//std::cout << "result[0]._peakTime" << result[0]._peakTime << std::endl;
+	//std::cout << "result[0]._peakHeight" << result[0]._peakHeight << std::endl;
 	return 0;
 }
 
