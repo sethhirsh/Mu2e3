@@ -4,6 +4,8 @@
 #include "FindPeakBase.hh"
 #include "TF1.h"
 #include "TGraphErrors.h"
+#include "ParamStructs.hh"
+#include "FitModelRoot.hh"
 
 class FindPeakBaseRoot : public FindPeakBase{
 	public:
@@ -11,6 +13,11 @@ class FindPeakBaseRoot : public FindPeakBase{
 		// FindPeakBaseRoot normal constructor with ConfigStruct initilization parameters
 		FindPeakBaseRoot(const ConfigStruct &initParams) : FindPeakBase(initParams){};
 
+		// Computes initial "guesses" for the resultant hit data
+		// This data is passed to all derived classes of FindPeakBaseRoot to compute initial parameters
+		// Calls findPeaks and dynamicPedestalAddPeak
+		void initialPeakGuess(const adcWaveform adcData, resultantHitData &initialGuess);
+	
 	protected:
 		
 
@@ -22,6 +29,17 @@ class FindPeakBaseRoot : public FindPeakBase{
 
 		TGraphErrors _fitData;
 		TF1 _fitModel;
+
+	private:
+	
+		// Performs explicit peak search on adc waveform data
+                void findPeaks(const TGraphErrors &gr, const ConfigStruct &initParams, resultantHitData &initialGuess, const double sigma = 3.0);
+
+                // This function searches for another peak in the waveform data by subtracting out a dynamic pedestal 
+                // from the adc waveform and finding the maximum adc value in the "subtracted data".
+                // This function is applied when no peak is found in the explicit peak search (findPeaks).
+                void dynamicPedestalAddPeak(const TGraphErrors &gr, resultantHitData &initialGuess);
+	
 
 };
 #endif

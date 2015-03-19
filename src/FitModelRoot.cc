@@ -14,6 +14,12 @@ namespace FitModelRoot
 	{
 	  DynamicPedestalParamStruct parStruct(par[0]);	
 	  return FitModel::dynamicPedestalTrunc(x[0],parStruct, fitInitParams);
+	}
+
+	Float_t dynamicPedestal(Double_t *x, Double_t *par)
+	{
+	 	DynamicPedestalParamStruct parStruct(par[0]);
+		return FitModel::dynamicPedestal(x[0],parStruct, fitInitParams);
 	}	
 
 	//Fitting function for current Function2
@@ -27,6 +33,18 @@ namespace FitModelRoot
 	  return FitModel::singlePeakTrunc(x[0],parStruct,fitInitParams);
 
 	}
+
+        //Fitting function for current Function2
+        //par[0] is shifted time 1st peak
+        //par[1] is scalingfactor 1st peak
+        //par[2] is sigma 1st peak
+        Float_t convolutionSinglePeak(Double_t *x, Double_t *par)
+        {
+          SinglePeakParamStruct parStruct(par[0],par[1],par[2]);
+
+          return FitModel::singlePeak(x[0],parStruct,fitInitParams);
+
+        }
 				
 	//Fitting function for current Function
 	//par[0] is shifted time 1st peak
@@ -40,6 +58,19 @@ namespace FitModelRoot
 
 	  return FitModel::singlePeakWithConstantPedestalTrunc(x[0],parStruct,fitInitParams);
 	}
+
+        //Fitting function for current Function
+        //par[0] is shifted time 1st peak
+        //par[1] is scalingfactor 1st peak
+        //par[2] is vertical shift 1st peak
+        //par[3] is sigma 1st peak
+
+        Float_t convolutionSinglePeakWithConstantPedestal(Double_t *x, Double_t *par)
+        {
+          SinglePeakWithConstantPedestalParamStruct parStruct(par[0],par[1],par[2],par[3]);
+
+          return FitModel::singlePeakWithConstantPedestal(x[0],parStruct,fitInitParams);
+        }
 
 	// This is a truncating fitting function with a dynamical pedestal
 	// par[0] is shifted time
@@ -55,7 +86,7 @@ namespace FitModelRoot
 
   		return FitModel::singlePeakWithDynamicPedestalTrunc(x[0],parStruct,fitInitParams);
   	}
-
+	
 	// Par0 - shift in X 1st peak
     // Par1 - scalingFactor 1st peak
     // Par2 - shift in 2nd peak minus shift in 1st peak

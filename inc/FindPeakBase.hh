@@ -30,7 +30,7 @@ typedef std::vector<resultantPeakData> resultantHitData;
     
     // Fills result using adc waveform data
     // NOTE : This function may begin with peak data provided in result which is replaced
-    virtual void process(const adcWaveform adcData, resultantHitData &result) = 0;
+    virtual void process(const adcWaveform adcData, const resultantHitData &initialGuess, resultantHitData &result) = 0;
 
     // Destructor
     virtual ~FindPeakBase(){}

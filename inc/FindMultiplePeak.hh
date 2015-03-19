@@ -3,11 +3,11 @@
 
 #include "Mu2e3/inc/FindPeakBaseRoot.hh"
 
-class SumADC : public FindPeakBase{
+class SumADC : public FindPeakBaseRoot{
 	public:
-		SumADC(const ConfigStruct &initParams);
+		SumADC(const ConfigStruct &initParams) : FindPeakBaseRoot(initParams){};
 
-		virtual void process(const adcWaveform adcData, resultantHitData &result);
+		virtual void process(const adcWaveform adcData, const resultantHitData &initialGuess, resultantHitData &result);
 };
 
 
@@ -18,9 +18,9 @@ class FindSinglePeak : public FindPeakBaseRoot{
 
 		// Fills result using adc waveform data using by fitting with the convolutionSinglePeakWithDynamicPedestal model
 		// NOTE : This function may begin with peak data provided in result which is replaced
-		virtual void process(const adcWaveform adcData, resultantHitData &result);
+		virtual void process(const adcWaveform adcData, const resultantHitData &initialGuess, resultantHitData &result);
 
-//	private:
+	protected:
 		void fitParams2ResultantData(const Double_t *fitParameters, resultantHitData &result);
 };
 
@@ -31,9 +31,9 @@ class FindSinglePeakWithConstantPedestal : public FindPeakBaseRoot{
 
 		// Fills result using adc waveform data using by fitting with the convolutionSinglePeakWithDynamicPedestal model
 		// NOTE : This function may begin with peak data provided in result which is replaced
-		virtual void process(const adcWaveform adcData, resultantHitData &result);
+		virtual void process(const adcWaveform adcData, const resultantHitData &initialGuess, resultantHitData &result);
 
-	private:
+	protected:
 		void fitParams2ResultantData(const Double_t *fitParameters, resultantHitData &result);
 };
 
@@ -46,9 +46,9 @@ class FindSinglePeakWithDynamicPedestal : public FindPeakBaseRoot{
 
 		// Fills result using adc waveform data using by fitting with the convolutionSinglePeakWithDynamicPedestal model
 		// NOTE : This function may begin with peak data provided in result which is replaced
-		virtual void process(const adcWaveform adcData, resultantHitData &result);
+		virtual void process(const adcWaveform adcData, const resultantHitData &initialGuess, resultantHitData &result);
 
-	private:
+	protected:
 
 		void fitParams2ResultantData(const Double_t *fitParameters, resultantHitData &result);
 
@@ -60,9 +60,9 @@ class FindDoublePeak : public FindPeakBaseRoot{
 
 		// Fills result using adc waveform data using by fitting with the convolutionSinglePeakWithDynamicPedestal model
 		// NOTE : This function may begin with peak data provided in result which is replaced
-		virtual void process(const adcWaveform adcData, resultantHitData &result);
+		virtual void process(const adcWaveform adcData, const resultantHitData &initialGuess, resultantHitData &result);
 
-	private:
+	protected:
 
 		void fitParams2ResultantData(const Double_t *fitParameters, resultantHitData &result);
 };
@@ -74,9 +74,9 @@ class FindDoublePeakWithDynamicPedestal : public FindPeakBaseRoot{
 
 		// Fills result using adc waveform data using by fitting with the convolutionSinglePeakWithDynamicPedestal model
 		// NOTE : This function may begin with peak data provided in result which is replaced
-		virtual void process(const adcWaveform adcData, resultantHitData &result);
+		virtual void process(const adcWaveform adcData, const resultantHitData &initialGuess, resultantHitData &result);
 
-	private:
+	protected:
 
 		void fitParams2ResultantData(const Double_t *fitParameters, resultantHitData &result);
 };
@@ -89,15 +89,7 @@ class FindMultiplePeaks : public FindPeakBaseRoot{
 		
 		// Fills result using adc waveform data using by fitting with the convolutionSinglePeakWithDynamicPedestal model
 		// NOTE : This function may begin with peak data provided in result which is replaced
-		virtual void process(const adcWaveform adcData, resultantHitData &result); 
-	private:
-		// Performs explicit peak search on adc waveform data
-		void findPeaks(const TGraphErrors &gr, const ConfigStruct &initParams, resultantHitData &result, const double sigma = 3.0);
-
-		// This function searches for another peak in the waveform data by subtracting out a dynamic pedestal 
-		// from the adc waveform and finding the maximum adc value in the "subtracted data".
-		// This function is applied when no peak is found in the explicit peak search (findPeaks).
-		void dynamicPedestalAddPeak(const TGraphErrors &gr, resultantHitData &result);
+		virtual void process(const adcWaveform adcData, const resultantHitData &initialGuess, resultantHitData &result); 
 
 };
 #endif

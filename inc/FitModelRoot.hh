@@ -9,12 +9,16 @@ namespace FitModelRoot
 
 	Float_t dynamicPedestalTrunc(Double_t *x, Double_t *par);
 
+	Float_t dynamicPedestal(Double_t *x, Double_t *par);
+
 	//Fitting function for current Function2
 	//par[0] is shifted time 1st peak
 	//par[1] is scalingfactor 1st peak
 	//par[2] is sigma 1st peak
 	Float_t convolutionSinglePeakTrunc(Double_t *x, Double_t *par);
-				
+			
+	Float_t convolutionSinglePeak(Double_t *x, Double_t *par);
+	
 	//Fitting function for current Function2
 	//par[0] is shifted time 1st peak
 	//par[1] is scalingfactor 1st peak
@@ -22,6 +26,8 @@ namespace FitModelRoot
 	//par[3] is sigma 1st peak
 
 	Float_t convolutionSinglePeakWithConstantPedestalTrunc(Double_t *x, Double_t *par);
+
+	Float_t convolutionSinglePeakWithConstantPedestal(Double_t *x, Double_t *par);
 
 	// This is a truncating fitting function with a dynamical pedestal
 	// par[0] is shifted time
