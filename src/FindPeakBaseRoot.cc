@@ -1,5 +1,7 @@
 #include "Mu2e3/inc/FindPeakBaseRoot.hh"
 
+
+namespace Mu2e{
 // Fits a model function to a waveform
 // Note: It is assumed that the waveform being fitted is normalized. 
 // Thus, the scaling factor parameter which is passed in must be not in units of bits but scaled to this normaliztion
@@ -125,4 +127,4 @@ void FindPeakBaseRoot::findPeaks(const TGraphErrors &gr, const ConfigStruct &ini
 		++ientry;
 		}
 }
-
+}

@@ -6,6 +6,8 @@
 #include "TTree.h"
 #include "TFile.h"
 
+using namespace Mu2e;
+
 void testSampleData()
 {
  	// Load Sample Data 

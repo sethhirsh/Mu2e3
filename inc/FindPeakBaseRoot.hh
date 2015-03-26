@@ -7,6 +7,7 @@
 #include "ParamStructs.hh"
 #include "FitModelRoot.hh"
 
+namespace Mu2e{
 class FindPeakBaseRoot : public FindPeakBase{
 	public:
 
@@ -42,4 +43,5 @@ class FindPeakBaseRoot : public FindPeakBase{
 	
 
 };
+}
 #endif

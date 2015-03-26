@@ -3,6 +3,8 @@
 
 #include "TMath.h"
 
+namespace Mu2e{
+
 // This struct contains all parameters which remain constant throughout the simulation
 struct ConfigStruct{
     const Double_t _shapingTime; // Shaping time (in units of ns)
@@ -34,8 +36,7 @@ struct ConfigStruct{
                      _hitPeriod(14.0)
                      {} 
 
+};
 
-
-
-}; 
+} 
 #endif

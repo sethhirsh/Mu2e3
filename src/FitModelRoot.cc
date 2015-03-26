@@ -2,6 +2,9 @@
 #include "TMath.h"
 #include "Mu2e3/inc/FitModel.hh"
 
+
+namespace Mu2e
+{
 namespace FitModelRoot
 {
 	
@@ -124,4 +127,5 @@ namespace FitModelRoot
   		return FitModel::doublePeakWithDynamicPedestalTrunc(x[0],parStruct,fitInitParams);
 	}
 
+}
 }

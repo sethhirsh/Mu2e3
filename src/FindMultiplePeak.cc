@@ -6,7 +6,7 @@
 // TODO : ADD CLASS FindDoublePeakWithConstantPedestal
 
 //SumADC::SumADC(const ConfigStruct &initParams) : FindPeakBaseRoot(initParams){}
-
+namespace Mu2e{
 void SumADC::process(const adcWaveform adcData, const resultantHitData &initialGuess, resultantHitData &result)
 {
  	int sum = 0;
@@ -325,5 +325,6 @@ void FindMultiplePeaks::process(const adcWaveform adcData, const resultantHitDat
 		}
 
 	}	
+}
 }
 

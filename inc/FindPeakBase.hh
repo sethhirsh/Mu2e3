@@ -4,6 +4,7 @@
 #include "TMath.h"
 #include "ConfigStruct.hh"
 
+namespace Mu2e{
 typedef unsigned int * adcWaveform;
 
 struct resultantPeakData
@@ -41,4 +42,5 @@ typedef std::vector<resultantPeakData> resultantHitData;
 
     ConfigStruct _initParams; 
 };
+}
 #endif

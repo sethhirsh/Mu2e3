@@ -5,8 +5,7 @@
 
 // TODO : ADD CLASS FindDoublePeakWithConstantPedestal
 
-//SumADC::SumADC(const ConfigStruct &initParams) : FindPeakBaseRoot(initParams){}
-
+namespace Mu2e{
 // FindSinglePeakWithoutTrunc normal constructor with ConfigStruct initilization parameters
 // NOTE THIS A HORRIBLE IDEA TO INHERIT THE CONSTRUCTOR OF SINGLE PEAK SINCE IT REPLACES _FITMODEL
 FindSinglePeakWithoutTrunc::FindSinglePeakWithoutTrunc(const ConfigStruct &initParams) : FindSinglePeak(initParams)
@@ -38,4 +37,5 @@ void FindDoublePeakVsSinglePeak::process(const adcWaveform adcData, const result
 		FindDoublePeak doublePeak(_initParams);
 		doublePeak.process(adcData, initialGuess, result);
 	}
+}
 }

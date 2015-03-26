@@ -1,6 +1,7 @@
 #ifndef ParamStructs_hh
 #define ParamStructs_hh
 
+namespace Mu2e{
 struct DynamicPedestalParamStruct{
    Double_t _Q;
 
@@ -73,5 +74,5 @@ struct DoublePeakWithDynamicPedestalParamStruct : DoublePeakParamStruct, Dynamic
 	DoublePeakParamStruct(shiftedTimeFirstPeak, scalingFactorFirstPeak, shiftedTimeSecondPeak, scalingFactorSecondPeak), 
 	DynamicPedestalParamStruct(Q){}
 };
-
+}
 #endif

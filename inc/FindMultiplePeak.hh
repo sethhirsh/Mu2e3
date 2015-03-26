@@ -3,6 +3,8 @@
 
 #include "Mu2e3/inc/FindPeakBaseRoot.hh"
 
+namespace Mu2e{
+
 class SumADC : public FindPeakBaseRoot{
 	public:
 		SumADC(const ConfigStruct &initParams) : FindPeakBaseRoot(initParams){};
@@ -92,4 +94,5 @@ class FindMultiplePeaks : public FindPeakBaseRoot{
 		virtual void process(const adcWaveform adcData, const resultantHitData &initialGuess, resultantHitData &result); 
 
 };
+}
 #endif

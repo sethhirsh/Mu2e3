@@ -5,7 +5,7 @@
 
 
 //TODO : FINISH TRUNCATION FIT FUNCTIONS
-
+namespace Mu2e{
 namespace FitModel
 {
 
@@ -193,5 +193,5 @@ namespace FitModel
   }
 
 
-
+}
 }

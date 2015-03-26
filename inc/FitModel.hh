@@ -5,6 +5,8 @@
 #include "ParamStructs.hh"
 #include "ConfigStruct.hh"
 
+namespace Mu2e{
+
 namespace FitModel
 {
   Float_t dynamicPedestal(const Double_t t, const DynamicPedestalParamStruct &fitParams, const ConfigStruct &initParams);
@@ -80,5 +82,6 @@ namespace FitModel
 
   Float_t doublePeakWithDynamicPedestalTrunc(const Double_t t, const DoublePeakWithDynamicPedestalParamStruct &fitParams, const ConfigStruct &initParams);
 
+}
 }
 #endif
